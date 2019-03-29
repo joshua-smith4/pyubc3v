@@ -1,6 +1,7 @@
 from get_ref import *
 import os
 from scipy.io import loadmat
+import numpy as np
 
 def load_multicam(dataset, group_name, section_number, optional_frames=None):
     home_path = get_ref(dataset)
@@ -18,6 +19,6 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     groundtruth_file = loadmat(os.path.join(base_path, 'groundtruth.mat'))
 
     camera_names = groundtruth_file['cameras']
-    print('Identified {:d} cameras'.format(len(camera_names[0])))
+    print('Identified {:d} cameras'.format(np.size(camera_names)))
 
 load_multicam('easy_pose', 'train', 3, "jim")
