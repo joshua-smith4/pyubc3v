@@ -1,5 +1,5 @@
 {
-  "easy_pose": "",
-  "inter_pose": "",
-  "hard_pose": ""
+  "easy_pose": "/home/jsmith/ubc3v/easy_pose",
+  "inter_pose": "/home/jsmith/ubc3v/inter_pose",
+  "hard_pose": "/home/jsmith/ubc3v/hard_pose"
 }
