@@ -25,7 +25,7 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
 
     image_folder_path = os.path.join(base_path, 'images', depth, str(camera_names[0]))
     image_names = [f for f in os.listdir(image_folder_path) if f.endswith('.png')]
-
+    image_names.sort()
     print(image_names)
 
 load_multicam('easy_pose', 'train', 3, "jim")
