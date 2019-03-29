@@ -18,9 +18,10 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     print('Loading groundtruth file {:d} ...'.format(section_number))
     groundtruth_file = loadmat(os.path.join(base_path, 'groundtruth.mat'))
 
-    camera_names = groundtruth_file['cameras']
-    print(camera_names.keys())
-    print('Identified {:d} cameras'.format(np.size(camera_names)))
+    cameras = groundtruth_file['cameras']
+    camera_names = [cameras[0][0][i][0][0][-1][0] for i in len(cameras[0][0])]
+    print(camera_names)
+    print('Identified {:d} cameras'.format(len(camera_names)))
 
     image_names = os.path.join(base_path, 'images', depth, str(camera_names[0]), '*.png')
     print(image_names)
