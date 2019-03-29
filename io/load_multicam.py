@@ -17,7 +17,7 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     print('Loading groundtruth file {:d} ...'.format(section_number))
     groundtruth_file = loadmat(os.path.join(base_path, 'groundtruth.mat'))
 
-    camera_names = groundtruth_file.keys()
+    camera_names = groundtruth_file['cameras']
     print('Identified cameras: {}'.format(camera_names))
 
 load_multicam('easy_pose', 'train', 3, "jim")
