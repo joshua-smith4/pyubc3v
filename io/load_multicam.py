@@ -78,20 +78,20 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     if optional_frames is None:
         optional_frames = (0,len(image_names)-1)
 
-    instances = []
-    for i in range(optional_frames[0], optional_frames[1]+1):
-        instances.append({})
-        # instances[i].append({}) # camera name dictionary
-        for j in range(len(camera_names)):
-            instances[i][camera_name[j]] = {
-                'translation': cameras[0][0][len(camera_names) - j - 1],
-                'rotation': 2,
-                'depth_image': 3,
-                'class_image': 4,
-            }
-            # instances[i][camera_name[j]]['depth_image']['cdata'] = instances[i][camera_name[j]]['depth_image']['cdata'][:,:,0]
-        # instances[i]['posture'] = groundtruth_file['joints'][i]
-    return instances, a
+    # instances = []
+    # for i in range(optional_frames[0], optional_frames[1]+1):
+    #     instances.append({})
+    #     # instances[i].append({}) # camera name dictionary
+    #     for j in range(len(camera_names)):
+    #         instances[i][camera_name[j]] = {
+    #             'translation': cameras[0][0][len(camera_names) - j - 1],
+    #             'rotation': 2,
+    #             'depth_image': 3,
+    #             'class_image': 4,
+    #         }
+    #         # instances[i][camera_name[j]]['depth_image']['cdata'] = instances[i][camera_name[j]]['depth_image']['cdata'][:,:,0]
+    #     # instances[i]['posture'] = groundtruth_file['joints'][i]
+    # return instances, a
     return cameras
 
 a = load_multicam('easy_pose', 'train', 3)
