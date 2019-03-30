@@ -2,6 +2,7 @@ from get_ref import *
 import os
 from scipy.io import loadmat
 import numpy as np
+import pandas
 
 def load_multicam(dataset, group_name, section_number, optional_frames=None):
     home_path = get_ref(dataset)
@@ -22,10 +23,28 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     camera_names = [cameras[0][0][i][0][0][-1][0] for i in range(len(cameras[0][0]))]
     camera_names.reverse()
     print('Identified {:d} cameras'.format(len(camera_names)))
-
+    print(len(cameras[0]), len(cameras[0][0]))
     image_folder_path = os.path.join(base_path, 'images', depth, str(camera_names[0]))
     image_names = [f for f in os.listdir(image_folder_path) if f.endswith('.png')]
-    image_names.sort()
-    print(image_names)
+    print('\tExpecting {:d} frames'.format(len(image_names)))
+    # image_names.sort()
+    # print(image_names)
+    if optional_frames is None:
+        optional_frames = (0,len(image_names)-1)
+
+    instances = []
+    for i in range(optional_frames[0], optional_frames[1]+1):
+        instances.append({})
+        # instances[i].append({}) # camera name dictionary
+        for j in range(len(camera_names)):
+            instances[i][camera_name[j]] = {
+                'translation': ,
+                'rotation': ,
+                'depth_image': ,
+                'class_image': ,
+            }
+            instances[i][camera_name[j]]['depth_image']['cdata'] = instances[i][camera_name[j]]['depth_image']['cdata'][:,:,0]
+        instances[i]['posture'] = groundtruth_file['joints'][i]
+    return instances
 
 load_multicam('easy_pose', 'train', 3, "jim")
