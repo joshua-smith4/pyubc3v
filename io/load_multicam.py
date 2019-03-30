@@ -1,7 +1,7 @@
 from get_ref import *
 import os
 from scipy.io import loadmat
-from scipy.misc import imread
+from scipy.imageio import imread
 import numpy as np
 import time
 
