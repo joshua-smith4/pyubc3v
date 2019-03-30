@@ -46,11 +46,11 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
             instances[i][camera_name] = {
                 'translation': cameras[0][0][camera_name]['frames'][0][0][0][i]['translate'][0][0][0],
                 'rotation': cameras[0][0][camera_name]['frames'][0][0][0][i]['rotate'][0][0][0],
-                'depth_image': imread(depth_path.format(camera_name=camera_name, idx=i)),
-                'class_image': imread(class_path.format(camera_name=camera_name, idx=i)),
+                'depth_image': imread(depth_path.format(camera_name=camera_name, idx=i+1)),
+                'class_image': imread(class_path.format(camera_name=camera_name, idx=i+1)),
             }
             instances[i][camera_name]['depth_image']['cdata'] = instances[i][camera_name[j]                                                             ]['depth_image']['cdata'][:, :, 0]
-        instances[i]['posture'] = groundtruth_file['joints'][i]
+        # instances[i]['posture'] = groundtruth_file['joints'][i]
     # return instances
     return groundtruth_file
 
