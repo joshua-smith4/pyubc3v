@@ -38,13 +38,13 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
         # instances[i].append({}) # camera name dictionary
         for j in range(len(camera_names)):
             instances[i][camera_name[j]] = {
-                'translation': ,
-                'rotation': ,
-                'depth_image': ,
-                'class_image': ,
+                'translation': 1,
+                'rotation': 2,
+                'depth_image': 3,
+                'class_image': 4,
             }
-            instances[i][camera_name[j]]['depth_image']['cdata'] = instances[i][camera_name[j]]['depth_image']['cdata'][:,:,0]
-        instances[i]['posture'] = groundtruth_file['joints'][i]
+            # instances[i][camera_name[j]]['depth_image']['cdata'] = instances[i][camera_name[j]]['depth_image']['cdata'][:,:,0]
+        # instances[i]['posture'] = groundtruth_file['joints'][i]
     return instances
 
 load_multicam('easy_pose', 'train', 3, "jim")
