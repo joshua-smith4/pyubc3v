@@ -3,7 +3,7 @@ import os
 from scipy.io import loadmat
 from scipy.misc import imread
 import numpy as np
-import pandas
+import time
 
 
 def load_multicam(dataset, group_name, section_number, optional_frames=None):
@@ -33,15 +33,14 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     image_names = [f for f in os.listdir(
         image_folder_path) if f.endswith('.png')]
     print('\tExpecting {:d} frames'.format(len(image_names)))
-    # image_names.sort()
-    # print(image_names)
+
     if optional_frames is None:
         optional_frames = (0, len(image_names) - 1)
 
+    start = time.time()
     instances = []
     for i in range(optional_frames[0], optional_frames[1] + 1):
         instances.append({})
-        # instances[i].append({}) # camera name dictionary
         for camera_name in camera_names:
             instances[i][camera_name] = {
                 'translation': cameras[0][0][camera_name]['frames'][0][0][0][i]['translate'][0][0][0],
@@ -49,11 +48,6 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
                 'depth_image': imread(depth_path.format(camera_name=camera_name, idx=i+1)),
                 'class_image': imread(class_path.format(camera_name=camera_name, idx=i+1)),
             }
-        print(i)
-            # instances[i][camera_name]['depth_image']['cdata'] = instances[i][camera_name[j]                                                             ]['depth_image']['cdata'][:, :, 0]
-        # instances[i]['posture'] = groundtruth_file['joints'][i]
-    # return instances
-    return groundtruth_file, instances
-
-
-a,b = load_multicam('easy_pose', 'train', 3)
+        instances[i]['posture'] = groundtruth_file['joints'][0][i]
+    print('Finished reading in {} s'.format(time.time() - start))
+    return instances
