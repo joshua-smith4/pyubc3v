@@ -24,6 +24,7 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     camera_names.reverse()
     print('Identified {:d} cameras'.format(len(camera_names)))
     print(len(cameras[0]), len(cameras[0][0]))
+    print(cameras[0][0][0])
     image_folder_path = os.path.join(base_path, 'images', depth, str(camera_names[0]))
     image_names = [f for f in os.listdir(image_folder_path) if f.endswith('.png')]
     print('\tExpecting {:d} frames'.format(len(image_names)))
