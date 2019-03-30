@@ -68,7 +68,7 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     # print(cameras[0][0][0][0][0][0][0][0]["rotate"].dtype)
     # a = np.squeeze(cameras[0][0][0][0][0][0][0][0]["rotate"])
     # print(a)
-    print(cameras[0][0]['frames'])
+    print(cameras[0][0]['Cam1'])
     image_folder_path = os.path.join(base_path, 'images', depth, str(camera_names[0]))
     image_names = [f for f in os.listdir(image_folder_path) if f.endswith('.png')]
     print('\tExpecting {:d} frames'.format(len(image_names)))
