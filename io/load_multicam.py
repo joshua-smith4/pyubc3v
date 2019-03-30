@@ -92,6 +92,6 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
             # instances[i][camera_name[j]]['depth_image']['cdata'] = instances[i][camera_name[j]]['depth_image']['cdata'][:,:,0]
         # instances[i]['posture'] = groundtruth_file['joints'][i]
     return instances, a
-    return a
+    return cameras
 
 a = load_multicam('easy_pose', 'train', 3)
