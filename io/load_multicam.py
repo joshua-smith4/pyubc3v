@@ -44,6 +44,9 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
     print('cameras[0][0][0][0][0][1]')
     print(len(cameras[0][0][0][0][0][1]))
     print(cameras[0][0][0][0][0][1])
+    print('cameras[0][0][0][0][0][0][0]')
+    print(len(cameras[0][0][0][0][0][0][0]))
+    print(cameras[0][0][0][0][0][0][0])
     image_folder_path = os.path.join(base_path, 'images', depth, str(camera_names[0]))
     image_names = [f for f in os.listdir(image_folder_path) if f.endswith('.png')]
     print('\tExpecting {:d} frames'.format(len(image_names)))
@@ -67,4 +70,4 @@ def load_multicam(dataset, group_name, section_number, optional_frames=None):
         # instances[i]['posture'] = groundtruth_file['joints'][i]
     return instances
 
-load_multicam('easy_pose', 'train', 3, "jim")
+load_multicam('easy_pose', 'train', 3)
